@@ -101,7 +101,7 @@ pidstat -u 5 1
 Simulate I/O pressure using `sync`.
 
 #### Step 1: Run `stress` to simulate I/O:
-![image](https://github.com/user-attachments/assets/403de7a3-a537-4e4c-92a8-48e484a1b2c2)
+![image](https://github.com/user-attachments/assets/86bcf64d-28d3-4539-a32d-c60fd90cc47d)
 ```bash
 stress --io 1 --timeout 600
 ```
@@ -152,7 +152,7 @@ See below pictures and explain how factors mainly affect to CPU stress.
 ![image](https://github.com/user-attachments/assets/28b15a27-8cf0-4d0b-aa1b-eb4d036b8e0a)
 
 
-Answer : The stress process is causing the high I/O wait time
+> Answer : The stress process is causing the high I/O wait time
        : From the picture, We can see I/O wait time of 51.39%. From below picture, 5.79% of wait and 8.38% of system mean I/O causes high CPU-usuage.
        
 ![image](https://github.com/user-attachments/assets/547061c6-52f0-4693-bb3b-b062ed51966f)
