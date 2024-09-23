@@ -2,6 +2,7 @@
 # 🖥️ Average Load in Linux
 
 When operating a system or program, it's vital for users not to shut down during a process. An unstable operating system can lead to data loss and reduced user trust. To avoid this, we often use tools like `top` or `uptime` when our system feels slow. But do we really understand what these mean? 
+
 🤔 Let's figure out the concepts and explore better ways to manage system performance.
 
 ![image](https://github.com/user-attachments/assets/5c0d9004-c772-4ec5-b3c7-65fcdcdfcb4b)
