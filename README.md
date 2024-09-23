@@ -70,6 +70,7 @@ We will simulate 100% CPU usage with the `stress` command.
 ```bash
 stress --cpu 1 --timeout 600
 ```
+> Set one CPU-bound task and the stress will run for 600 seconds.
 
 #### Step 2: Check the load with `uptime` in a second terminal:
 ![image](https://github.com/user-attachments/assets/fbe9f0ee-0313-4c16-a1ad-e5deb4fc15c8)
@@ -84,6 +85,7 @@ uptime
 mpstat -P ALL 5 1
 ```
 > One CPU is at 100%, indicating that the increased load is due to high CPU usage.
+> We can see status of CPU from 'mpstat'
 
 #### Step 4: Find the culprit process:
 ![image](https://github.com/user-attachments/assets/7addc2c0-e274-4fb5-aefd-53352ea6dd5e)
@@ -117,7 +119,7 @@ mpstat -P ALL 5 1
 ```
 > One CPU has an I/O wait time of 66.76%, showing the load is due to I/O activity.
 
-#### Step 4: Identify the process:
+#### Step 4: Identify the process ID:
 ![image](https://github.com/user-attachments/assets/b8255d51-6c65-4ff8-9fa1-a084647d8433)
 ```bash
 pidstat -u 5 1
@@ -142,6 +144,18 @@ stress --cpu 8 --timeout 600
 pidstat 1
 ```
 > The 8 processes are contending for 2 CPUs, with each process waiting for the CPU about 75% of the time.
+
+---
+
+### ❓ Simple Question ❓
+See below pictures and explain how factors mainly affect to CPU stress. 
+![image](https://github.com/user-attachments/assets/28b15a27-8cf0-4d0b-aa1b-eb4d036b8e0a)
+
+
+Answer : The stress process is causing the high I/O wait time
+       : From the picture, We can see I/O wait time of 51.39%. From below picture, 5.79% of wait and 8.38% of system mean I/O causes high CPU-usuage.
+       
+![image](https://github.com/user-attachments/assets/547061c6-52f0-4693-bb3b-b062ed51966f)
 
 ---
 
