@@ -1,7 +1,8 @@
 
 # 🖥️ Average Load in Linux
+Today, I am gonna analyze Average Load. The reason why I analyze Average Load is that we can evaluate the system overall competency and status. Also we can check about the system's bottlenecks or performance issues.
 
-When operating a system or program, it's vital for users not to shut down during a process. An unstable operating system can lead to data loss and reduced user trust. To avoid this, we often use tools like `top` or `uptime` when our system feels slow. But do we really understand what these mean? 
+Additionally, When operating a system or program, it's vital for users not to shut down during a process. An unstable operating system can lead to data loss and reduced user trust. To avoid this, we often use tools like `top` or `uptime` when our system feels slow. But do we really understand what these mean? 
 
 🤔 Let's figure out the concepts and explore better ways to manage system performance.
 
@@ -85,7 +86,10 @@ uptime
 mpstat -P ALL 5 1
 ```
 > One CPU is at 100%, indicating that the increased load is due to high CPU usage.
+> 
 > We can see status of CPU from 'mpstat'
+> 
+> It collects statistics of all CPU cores in the system once every 5 seconds
 
 #### Step 4: Find the culprit process:
 ![image](https://github.com/user-attachments/assets/7addc2c0-e274-4fb5-aefd-53352ea6dd5e)
@@ -93,6 +97,8 @@ mpstat -P ALL 5 1
 pidstat -u 5 1
 ```
 > The process with PID 10867 is causing the 100% CPU usage.
+>
+> It monitors and reports CPU usage, it collects statistics every 5 seconds and generates an only one report that pidstat generates.
 
 ---
 
@@ -149,13 +155,11 @@ pidstat 1
 
 ### ❓ Simple Question ❓
 See below pictures and explain how factors mainly affect to CPU stress. 
-![image](https://github.com/user-attachments/assets/28b15a27-8cf0-4d0b-aa1b-eb4d036b8e0a)
+![image](https://github.com/user-attachments/assets/880bbe2c-0b5e-43ed-ba64-cbb734be43d9)
 
 
-> Answer : The stress process is causing the high I/O wait time
-       : From the picture, We can see I/O wait time of 51.39%. From below picture, 5.79% of wait and 8.38% of system mean I/O causes high CPU-usuage.
-       
-![image](https://github.com/user-attachments/assets/547061c6-52f0-4693-bb3b-b062ed51966f)
+> Answer : This situation appears to be caused by I/O bottlenecks. CPU 1 is waiting for I/O operations (likely disk or network-related) to complete, as indicated by the high %iowait. This kind of scenario is common when the disk or network is slow, heavily loaded, or underperforming, which forces the CPU to wait for I/O resources.
+![image](https://github.com/user-attachments/assets/5f5c6d08-b875-42ce-b043-2741cf708b33)
 
 ---
 
